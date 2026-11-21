@@ -1,0 +1,410 @@
+{
+  "seed": 360,
+  "target": "charge_off_60m",
+  "features": [
+    "gross_approval",
+    "sba_guaranteed_approval",
+    "initial_interest_rate_pct",
+    "rate_type",
+    "project_state",
+    "naics_code",
+    "processing_method",
+    "business_type",
+    "business_age",
+    "collateral_reported",
+    "revolving_credit"
+  ],
+  "database": {
+    "name": "creditrisk.duckdb",
+    "bytes": 13643776,
+    "sha256": "c82aedd1c03e7fd47687b619982f3182bd22b495e2f4e9e71adca4a527747b13"
+  },
+  "sklearn": "1.9.1",
+  "xgboost": "3.4.1",
+  "studies": {
+    "retrospective": {
+      "windows": {
+        "train_end": "2015-10-01",
+        "tune_end": "2016-10-01",
+        "calibration_end": "2017-04-01",
+        "validation_end": "2017-10-01",
+        "test_start": "2017-10-01",
+        "test_end": "2019-10-01",
+        "maturity_cutoff": null
+      },
+      "champion": "xgboost",
+      "tuning": [
+        {
+          "study": "retrospective",
+          "model": "logistic",
+          "parameters": {
+            "C": 0.03,
+            "class_weight": null
+          },
+          "tuning_ap": 0.08300463401034616
+        },
+        {
+          "study": "retrospective",
+          "model": "logistic",
+          "parameters": {
+            "C": 0.03,
+            "class_weight": "balanced"
+          },
+          "tuning_ap": 0.08247388332444769
+        },
+        {
+          "study": "retrospective",
+          "model": "logistic",
+          "parameters": {
+            "C": 1.0,
+            "class_weight": null
+          },
+          "tuning_ap": 0.08282459816519035
+        },
+        {
+          "study": "retrospective",
+          "model": "logistic",
+          "parameters": {
+            "C": 1.0,
+            "class_weight": "balanced"
+          },
+          "tuning_ap": 0.08231406966555156
+        },
+        {
+          "study": "retrospective",
+          "model": "random_forest",
+          "parameters": {
+            "max_depth": 11,
+            "min_samples_leaf": 45,
+            "class_weight": null
+          },
+          "tuning_ap": 0.0806529610399655
+        },
+        {
+          "study": "retrospective",
+          "model": "random_forest",
+          "parameters": {
+            "max_depth": 11,
+            "min_samples_leaf": 45,
+            "class_weight": "balanced_subsample"
+          },
+          "tuning_ap": 0.08041770245749914
+        },
+        {
+          "study": "retrospective",
+          "model": "random_forest",
+          "parameters": {
+            "max_depth": 17,
+            "min_samples_leaf": 25,
+            "class_weight": null
+          },
+          "tuning_ap": 0.08636820550039832
+        },
+        {
+          "study": "retrospective",
+          "model": "random_forest",
+          "parameters": {
+            "max_depth": 17,
+            "min_samples_leaf": 25,
+            "class_weight": "balanced_subsample"
+          },
+          "tuning_ap": 0.08524666630638111
+        },
+        {
+          "study": "retrospective",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 3,
+            "scale_pos_weight": "unweighted"
+          },
+          "tuning_ap": 0.08980249883538416
+        },
+        {
+          "study": "retrospective",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 3,
+            "scale_pos_weight": "sqrt_ratio"
+          },
+          "tuning_ap": 0.08776269849416216
+        },
+        {
+          "study": "retrospective",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 5,
+            "scale_pos_weight": "unweighted"
+          },
+          "tuning_ap": 0.09535650819695521
+        },
+        {
+          "study": "retrospective",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 5,
+            "scale_pos_weight": "sqrt_ratio"
+          },
+          "tuning_ap": 0.0939648447680905
+        }
+      ],
+      "calibration": [
+        {
+          "study": "retrospective",
+          "model": "logistic",
+          "raw_brier": 0.04376447251429609,
+          "sigmoid_brier": 0.04378198481305418,
+          "sigmoid_slope": 1.1204061219436519,
+          "sigmoid_intercept": 0.3959228610883801,
+          "chosen": "identity",
+          "selection_brier": 0.04376447251429609
+        },
+        {
+          "study": "retrospective",
+          "model": "random_forest",
+          "raw_brier": 0.04379534947367617,
+          "sigmoid_brier": 0.04367552494962984,
+          "sigmoid_slope": 1.483740494477645,
+          "sigmoid_intercept": 1.5056775247689351,
+          "chosen": "sigmoid",
+          "selection_brier": 0.04367552494962984
+        },
+        {
+          "study": "retrospective",
+          "model": "xgboost",
+          "raw_brier": 0.043469712138175964,
+          "sigmoid_brier": 0.04343624413013458,
+          "sigmoid_slope": 1.2225607633590698,
+          "sigmoid_intercept": 0.6732785105705261,
+          "chosen": "sigmoid",
+          "selection_brier": 0.04343624413013458
+        }
+      ],
+      "thresholds": {
+        "logistic": {
+          "low_miss_cost": {
+            "bayes_threshold": 0.2,
+            "validation_threshold": 1.000001
+          },
+          "base": {
+            "bayes_threshold": 0.09090909090909091,
+            "validation_threshold": 0.085
+          },
+          "high_miss_cost": {
+            "bayes_threshold": 0.047619047619047616,
+            "validation_threshold": 0.04
+          }
+        },
+        "random_forest": {
+          "low_miss_cost": {
+            "bayes_threshold": 0.2,
+            "validation_threshold": 0.2
+          },
+          "base": {
+            "bayes_threshold": 0.09090909090909091,
+            "validation_threshold": 0.07500000000000001
+          },
+          "high_miss_cost": {
+            "bayes_threshold": 0.047619047619047616,
+            "validation_threshold": 0.034999999999999996
+          }
+        },
+        "xgboost": {
+          "low_miss_cost": {
+            "bayes_threshold": 0.2,
+            "validation_threshold": 1.000001
+          },
+          "base": {
+            "bayes_threshold": 0.09090909090909091,
+            "validation_threshold": 0.08
+          },
+          "high_miss_cost": {
+            "bayes_threshold": 0.047619047619047616,
+            "validation_threshold": 0.04
+          }
+        }
+      },
+      "decile_cutpoints": [
+        0.007452195370569826,
+        0.013279573433101178,
+        0.019214952178299428,
+        0.026315665245056158,
+        0.03427700698375702,
+        0.04324911460280419,
+        0.05495787784457207,
+        0.06868131160736084,
+        0.09258092194795609
+      ]
+    },
+    "horizon_mature": {
+      "windows": {
+        "train_end": "2010-10-01",
+        "tune_end": "2011-10-01",
+        "calibration_end": "2012-04-01",
+        "validation_end": "2012-10-01",
+        "test_start": "2017-10-01",
+        "test_end": "2019-10-01",
+        "maturity_cutoff": "2017-10-01"
+      },
+      "champion": "logistic",
+      "tuning": [
+        {
+          "study": "horizon_mature",
+          "model": "logistic",
+          "parameters": {
+            "C": 0.03,
+            "class_weight": null
+          },
+          "tuning_ap": 0.08702061887374611
+        },
+        {
+          "study": "horizon_mature",
+          "model": "logistic",
+          "parameters": {
+            "C": 0.03,
+            "class_weight": "balanced"
+          },
+          "tuning_ap": 0.08674583812443745
+        },
+        {
+          "study": "horizon_mature",
+          "model": "logistic",
+          "parameters": {
+            "C": 1.0,
+            "class_weight": null
+          },
+          "tuning_ap": 0.08711094669823591
+        },
+        {
+          "study": "horizon_mature",
+          "model": "logistic",
+          "parameters": {
+            "C": 1.0,
+            "class_weight": "balanced"
+          },
+          "tuning_ap": 0.08591120528377971
+        },
+        {
+          "study": "horizon_mature",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 3,
+            "scale_pos_weight": "unweighted"
+          },
+          "tuning_ap": 0.0917204973773248
+        },
+        {
+          "study": "horizon_mature",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 3,
+            "scale_pos_weight": "sqrt_ratio"
+          },
+          "tuning_ap": 0.09162163099343262
+        },
+        {
+          "study": "horizon_mature",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 5,
+            "scale_pos_weight": "unweighted"
+          },
+          "tuning_ap": 0.09152816067341944
+        },
+        {
+          "study": "horizon_mature",
+          "model": "xgboost",
+          "parameters": {
+            "max_depth": 5,
+            "scale_pos_weight": "sqrt_ratio"
+          },
+          "tuning_ap": 0.09187951295074875
+        }
+      ],
+      "calibration": [
+        {
+          "study": "horizon_mature",
+          "model": "logistic",
+          "raw_brier": 0.033979755128894694,
+          "sigmoid_brier": 0.033887579811630764,
+          "sigmoid_slope": 0.8091757371469173,
+          "sigmoid_intercept": -0.6487841267120474,
+          "chosen": "sigmoid",
+          "selection_brier": 0.033887579811630764
+        },
+        {
+          "study": "horizon_mature",
+          "model": "xgboost",
+          "raw_brier": 0.04470366984605789,
+          "sigmoid_brier": 0.033902984112501144,
+          "sigmoid_slope": 0.7175101041793823,
+          "sigmoid_intercept": -1.9093488454818726,
+          "chosen": "sigmoid",
+          "selection_brier": 0.033902984112501144
+        }
+      ],
+      "thresholds": {
+        "logistic": {
+          "low_miss_cost": {
+            "bayes_threshold": 0.2,
+            "validation_threshold": 1.000001
+          },
+          "base": {
+            "bayes_threshold": 0.09090909090909091,
+            "validation_threshold": 0.12000000000000001
+          },
+          "high_miss_cost": {
+            "bayes_threshold": 0.047619047619047616,
+            "validation_threshold": 0.04
+          }
+        },
+        "xgboost": {
+          "low_miss_cost": {
+            "bayes_threshold": 0.2,
+            "validation_threshold": 0.155
+          },
+          "base": {
+            "bayes_threshold": 0.09090909090909091,
+            "validation_threshold": 0.14500000000000002
+          },
+          "high_miss_cost": {
+            "bayes_threshold": 0.047619047619047616,
+            "validation_threshold": 0.045
+          }
+        }
+      },
+      "decile_cutpoints": [
+        0.011910066271518164,
+        0.0178947672837323,
+        0.022187578912513526,
+        0.025972928910726886,
+        0.029646053372851595,
+        0.03403467392708616,
+        0.03966507354668996,
+        0.0472001324646745,
+        0.05952937852446014
+      ]
+    }
+  },
+  "artifacts": {
+    "horizon_mature.joblib": {
+      "name": "horizon_mature.joblib",
+      "bytes": 162788,
+      "sha256": "5a7af74959e43918240bb5af330ee1e2805a3ff8241e8b4912708f350b25b0cd"
+    },
+    "horizon_mature_xgboost.ubj": {
+      "name": "horizon_mature_xgboost.ubj",
+      "bytes": 503659,
+      "sha256": "29cfc9040b40d03065296910b7baeb9795ac8cebbb94e4c64e647e4f3491ec32"
+    },
+    "retrospective.joblib": {
+      "name": "retrospective.joblib",
+      "bytes": 2631124,
+      "sha256": "58d79f4a6a9bbf9db8ccd18e04162196b5ca87cf1d1f8e40c75790a6ad3ae236"
+    },
+    "retrospective_xgboost.ubj": {
+      "name": "retrospective_xgboost.ubj",
+      "bytes": 546964,
+      "sha256": "fff6f96c70c0a7941cc6ef76b13eb40c537832ffbfce82b76b27339bb49f6598"
+    }
+  }
+}

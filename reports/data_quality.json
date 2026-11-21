@@ -1,0 +1,460 @@
+{
+  "sources": {
+    "csv": {
+      "name": "FOIA_7a_FY2010_FY2019_asof_260930.csv",
+      "bytes": 255300948,
+      "sha256": "39aa32b71fb5dbb4bfb178c9b3d597c92bb6903622027c2f8360d13e57d0abb2"
+    },
+    "dictionary": {
+      "name": "7a_504_foia_data_dictionary.xlsx",
+      "bytes": 24529,
+      "sha256": "777ba97a6f92e325f79905610816cb59d41f1971cd964c54dc30ef02730a3941"
+    }
+  },
+  "duplicate_check": {
+    "source_rows": 545751,
+    "distinct_source_rows": 544615,
+    "duplicate_groups": 886,
+    "excess_exact_duplicate_rows": 1136
+  },
+  "duplicates_by_normalized_status": [
+    {
+      "loan_status": "CANCLD",
+      "duplicate_groups": 621,
+      "excess_exact_duplicate_rows": 824
+    },
+    {
+      "loan_status": "EXEMPT",
+      "duplicate_groups": 15,
+      "excess_exact_duplicate_rows": 19
+    },
+    {
+      "loan_status": "PIF",
+      "duplicate_groups": 250,
+      "excess_exact_duplicate_rows": 293
+    }
+  ],
+  "source_categories": {
+    "Program": [
+      {
+        "raw_value": " 7A",
+        "records": 545751
+      }
+    ],
+    "AsOfDate": [
+      {
+        "raw_value": "2026-09-30",
+        "records": 545751
+      }
+    ],
+    "LoanStatus": [
+      {
+        "raw_value": "P I F",
+        "records": 397721
+      },
+      {
+        "raw_value": "CANCLD",
+        "records": 66746
+      },
+      {
+        "raw_value": "EXEMPT",
+        "records": 46688
+      },
+      {
+        "raw_value": "CHGOFF",
+        "records": 34554
+      },
+      {
+        "raw_value": "COMMIT",
+        "records": 42
+      }
+    ],
+    "RevolverStatus": [
+      {
+        "raw_value": "N",
+        "records": 377567
+      },
+      {
+        "raw_value": "Y",
+        "records": 168184
+      }
+    ],
+    "CollateralInd": [
+      {
+        "raw_value": "Y",
+        "records": 392913
+      },
+      {
+        "raw_value": "N",
+        "records": 152838
+      }
+    ],
+    "SoldSecMrktInd": [
+      {
+        "raw_value": null,
+        "records": 417762
+      },
+      {
+        "raw_value": "Y",
+        "records": 127878
+      },
+      {
+        "raw_value": "N",
+        "records": 111
+      }
+    ],
+    "FixedorVariableInterestInd": [
+      {
+        "raw_value": "V",
+        "records": 430002
+      },
+      {
+        "raw_value": "F",
+        "records": 115749
+      }
+    ],
+    "ProcessingMethod": [
+      {
+        "raw_value": "SBA Express Program",
+        "records": 262847
+      },
+      {
+        "raw_value": "Preferred Lenders Program",
+        "records": 175693
+      },
+      {
+        "raw_value": "7a General",
+        "records": 41697
+      },
+      {
+        "raw_value": "Small Loan Advantage Initiative",
+        "records": 31522
+      },
+      {
+        "raw_value": "Patriot Express Loans",
+        "records": 6247
+      },
+      {
+        "raw_value": "Community Advantage Initiative",
+        "records": 5853
+      },
+      {
+        "raw_value": "Community Express",
+        "records": 5468
+      },
+      {
+        "raw_value": "Working Capital CAPLine",
+        "records": 3205
+      },
+      {
+        "raw_value": "Rural Loan Initiative",
+        "records": 3096
+      },
+      {
+        "raw_value": "Certified Lenders Program",
+        "records": 2653
+      },
+      {
+        "raw_value": "Gulf Opportunity Pilot Loan Program",
+        "records": 1720
+      },
+      {
+        "raw_value": "International Trade Loans",
+        "records": 1530
+      },
+      {
+        "raw_value": "Export Express",
+        "records": 1419
+      },
+      {
+        "raw_value": "7a with EWCP",
+        "records": 1002
+      },
+      {
+        "raw_value": "Preferred Lenders with EWCP",
+        "records": 658
+      },
+      {
+        "raw_value": "Contract CAPLine",
+        "records": 572
+      },
+      {
+        "raw_value": "Seasonal CAPLine",
+        "records": 221
+      },
+      {
+        "raw_value": "Builders CAPLine",
+        "records": 154
+      },
+      {
+        "raw_value": "Dealer Floor Plan Loans",
+        "records": 125
+      },
+      {
+        "raw_value": "Small Asset Base Line of Credit (CAPLine)",
+        "records": 48
+      },
+      {
+        "raw_value": "Export Import Harmonization  (EXIM)",
+        "records": 11
+      },
+      {
+        "raw_value": "Community Advantage International Trade",
+        "records": 5
+      },
+      {
+        "raw_value": "Certified Lenders Program with EWCP",
+        "records": 3
+      },
+      {
+        "raw_value": "SBA Express Bridge Loan",
+        "records": 2
+      }
+    ],
+    "BusinessAge": [
+      {
+        "raw_value": "Existing, 5 or more years",
+        "records": 216519
+      },
+      {
+        "raw_value": "Startup, Loan Funds will Open Business",
+        "records": 81721
+      },
+      {
+        "raw_value": "New, Less than 1 Year old",
+        "records": 52801
+      },
+      {
+        "raw_value": "Existing or more than 2 years old",
+        "records": 51889
+      },
+      {
+        "raw_value": "Unanswered",
+        "records": 47927
+      },
+      {
+        "raw_value": "Less than 4 years old but at least 3",
+        "records": 33448
+      },
+      {
+        "raw_value": "Less than 3 years old but at least 2",
+        "records": 28254
+      },
+      {
+        "raw_value": "Less than 5 years old but at least 4",
+        "records": 20918
+      },
+      {
+        "raw_value": "Change of Ownership",
+        "records": 10387
+      },
+      {
+        "raw_value": null,
+        "records": 1861
+      },
+      {
+        "raw_value": "New Business or 2 years or less",
+        "records": 26
+      }
+    ]
+  },
+  "date_coverage": [
+    {
+      "field": "snapshot_date",
+      "earliest": "2026-09-30",
+      "latest": "2026-09-30",
+      "parsed_records": 544615,
+      "invalid_records": 0,
+      "blank_records": 0
+    },
+    {
+      "field": "approval_date",
+      "earliest": "2009-10-01",
+      "latest": "2019-09-30",
+      "parsed_records": 544615,
+      "invalid_records": 0,
+      "blank_records": 0
+    },
+    {
+      "field": "first_disbursement_date",
+      "earliest": "2009-10-01",
+      "latest": "2026-06-17",
+      "parsed_records": 478388,
+      "invalid_records": 0,
+      "blank_records": 66227
+    },
+    {
+      "field": "paid_in_full_date",
+      "earliest": "2009-11-01",
+      "latest": "2026-08-31",
+      "parsed_records": 397428,
+      "invalid_records": 0,
+      "blank_records": 147187
+    },
+    {
+      "field": "charge_off_date",
+      "earliest": "2010-06-15",
+      "latest": "2026-10-01",
+      "parsed_records": 34544,
+      "invalid_records": 0,
+      "blank_records": 510071
+    }
+  ],
+  "quality_checks_nonexclusive": {
+    "first_disbursement_before_approval": 424,
+    "first_disbursement_after_snapshot": 0,
+    "chargeoff_before_first_disbursement": 0,
+    "chargeoff_after_snapshot": 2,
+    "payoff_before_first_disbursement": 5,
+    "payoff_after_snapshot": 0,
+    "chargeoff_status_missing_date": 10,
+    "chargeoff_date_without_chargeoff_status": 0,
+    "positive_chargeoff_amount_without_chargeoff_status": 0,
+    "chargeoff_status_nonpositive_or_missing_amount": 11,
+    "paid_status_missing_date": 0,
+    "paid_date_without_paid_status": 0,
+    "both_outcome_dates_present": 0,
+    "closed_or_undisbursed_status_with_disbursement": 0,
+    "approval_nonpositive": 0,
+    "guarantee_outside_approval": 0,
+    "term_nonpositive": 231,
+    "initial_rate_nonpositive": 8,
+    "approval_fiscal_year_mismatch": 0,
+    "eligible_chargeoff_after_horizon": 15100,
+    "eligible_payoff_before_horizon": 216185
+  },
+  "target_by_status": [
+    {
+      "target_eligibility": "cancelled_or_undisbursed",
+      "loan_status": "CANCLD",
+      "charge_off_60m": null,
+      "records": 65922
+    },
+    {
+      "target_eligibility": "cancelled_or_undisbursed",
+      "loan_status": "COMMIT",
+      "charge_off_60m": null,
+      "records": 42
+    },
+    {
+      "target_eligibility": "chargeoff_date_missing",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": null,
+      "records": 10
+    },
+    {
+      "target_eligibility": "eligible",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": 0,
+      "records": 15100
+    },
+    {
+      "target_eligibility": "eligible",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": 1,
+      "records": 19388
+    },
+    {
+      "target_eligibility": "eligible",
+      "loan_status": "EXEMPT",
+      "charge_off_60m": 0,
+      "records": 46629
+    },
+    {
+      "target_eligibility": "eligible",
+      "loan_status": "PIF",
+      "charge_off_60m": 0,
+      "records": 396680
+    },
+    {
+      "target_eligibility": "incomplete_60m_followup",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": null,
+      "records": 3
+    },
+    {
+      "target_eligibility": "incomplete_60m_followup",
+      "loan_status": "EXEMPT",
+      "charge_off_60m": null,
+      "records": 33
+    },
+    {
+      "target_eligibility": "incomplete_60m_followup",
+      "loan_status": "PIF",
+      "charge_off_60m": null,
+      "records": 116
+    },
+    {
+      "target_eligibility": "inconsistent_origination_date",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": null,
+      "records": 41
+    },
+    {
+      "target_eligibility": "inconsistent_origination_date",
+      "loan_status": "EXEMPT",
+      "charge_off_60m": null,
+      "records": 6
+    },
+    {
+      "target_eligibility": "inconsistent_origination_date",
+      "loan_status": "PIF",
+      "charge_off_60m": null,
+      "records": 377
+    },
+    {
+      "target_eligibility": "missing_first_disbursement",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": null,
+      "records": 10
+    },
+    {
+      "target_eligibility": "missing_first_disbursement",
+      "loan_status": "EXEMPT",
+      "charge_off_60m": null,
+      "records": 1
+    },
+    {
+      "target_eligibility": "missing_first_disbursement",
+      "loan_status": "PIF",
+      "charge_off_60m": null,
+      "records": 252
+    },
+    {
+      "target_eligibility": "outcome_date_outside_observation",
+      "loan_status": "CHGOFF",
+      "charge_off_60m": null,
+      "records": 2
+    },
+    {
+      "target_eligibility": "outcome_date_outside_observation",
+      "loan_status": "PIF",
+      "charge_off_60m": null,
+      "records": 3
+    }
+  ],
+  "target_sensitivity": {
+    "base_eligible": 477797,
+    "positives": 19388,
+    "exempt_negatives": 46629,
+    "terminal_only_eligible": 431168,
+    "singleton_eligible": 477532,
+    "singleton_positives": 19388
+  },
+  "portfolio_totals": {
+    "dimension": "portfolio",
+    "segment": "All records",
+    "records": 544615,
+    "gross_approval_usd": "205374857293.00",
+    "sba_guaranteed_approval_usd": "152413410358.98",
+    "snapshot_chargeoff_records": 34554,
+    "eligible_60m_records": 477797,
+    "chargeoffs_60m": 19388,
+    "snapshot_chargeoff_pct": 6.3447,
+    "chargeoff_60m_pct": 4.0578
+  },
+  "public_summary": {
+    "minimum_segment_records": 10,
+    "omitted_segments": 275
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "source_database": {
+    "name": "creditrisk.duckdb",
+    "bytes": 13643776,
+    "sha256": "c82aedd1c03e7fd47687b619982f3182bd22b495e2f4e9e71adca4a527747b13"
+  },
+  "models": {
+    "retrospective": {
+      "selected_on_validation": "xgboost"
+    },
+    "horizon_mature": {
+      "selected_on_validation": "logistic"
+    }
+  },
+  "explanation": {
+    "sample_records": 2500,
+    "max_additivity_error": 5.245208740234375e-06
+  },
+  "scores": {
+    "name": "loan_scores.parquet",
+    "bytes": 9569459,
+    "sha256": "fbf16ea7d8ff2755e6048bd2e44736a20ed0813652b574045d79a9e8e828b09d"
+  }
+}

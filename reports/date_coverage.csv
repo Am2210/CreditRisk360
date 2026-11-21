@@ -1,0 +1,6 @@
+field,earliest,latest,parsed_records,invalid_records,blank_records
+snapshot_date,2026-09-30,2026-09-30,544615,0,0
+approval_date,2009-10-01,2019-09-30,544615,0,0
+first_disbursement_date,2009-10-01,2026-06-17,478388,0,66227
+paid_in_full_date,2009-11-01,2026-08-31,397428,0,147187
+charge_off_date,2010-06-15,2026-10-01,34544,0,510071

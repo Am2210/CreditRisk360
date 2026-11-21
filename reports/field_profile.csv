@@ -1,0 +1,43 @@
+source_field,ingestion_type,sample_inferred_type,source_blank_rows,source_blank_pct,typed_field,typed_type,typed_null_records_after_dedup,feature_decision
+AsOfDate,VARCHAR,DATE,0,0.0,snapshot_date,DATE,0,Cohort timing only
+Program,VARCHAR,VARCHAR,0,0.0,program,VARCHAR,0,Descriptive or unverified timing omitted
+LocationID,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+BorrName,VARCHAR,VARCHAR,0,0.0,,,,Borrower identity or granular geography omitted
+BorrStreet,VARCHAR,VARCHAR,0,0.0,,,,Borrower identity or granular geography omitted
+BorrCity,VARCHAR,VARCHAR,0,0.0,,,,Borrower identity or granular geography omitted
+BorrState,VARCHAR,VARCHAR,0,0.0,,,,Borrower identity or granular geography omitted
+BorrZip,VARCHAR,VARCHAR,0,0.0,,,,Borrower identity or granular geography omitted
+BankName,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+BankFDICNumber,VARCHAR,VARCHAR,39309,7.2027,,,,Outcome or servicing only
+BankNCUANumber,VARCHAR,VARCHAR,528060,96.7584,,,,Outcome or servicing only
+BankStreet,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+BankCity,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+BankState,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+BankZip,VARCHAR,VARCHAR,1,0.0002,,,,Outcome or servicing only
+GrossApproval,VARCHAR,DOUBLE,0,0.0,gross_approval,"DECIMAL(18,2)",0,Approval/disbursement candidate
+SBAGuaranteedApproval,VARCHAR,DOUBLE,0,0.0,sba_guaranteed_approval,"DECIMAL(18,2)",0,Approval/disbursement candidate
+ApprovalDate,VARCHAR,DATE,0,0.0,approval_date,DATE,0,Cohort timing only
+ApprovalFY,VARCHAR,BIGINT,0,0.0,approval_fy,SMALLINT,0,Approval/disbursement candidate
+FirstDisbursementDate,VARCHAR,DATE,67051,12.286,first_disbursement_date,DATE,66227,Cohort timing only
+ProcessingMethod,VARCHAR,VARCHAR,0,0.0,processing_method,VARCHAR,0,Approval/disbursement candidate
+InitialInterestRate,VARCHAR,DOUBLE,0,0.0,initial_interest_rate_pct,"DECIMAL(12,5)",0,Approval/disbursement candidate
+FixedorVariableInterestInd,VARCHAR,VARCHAR,0,0.0,rate_type,VARCHAR,0,Approval/disbursement candidate
+TermInMonths,VARCHAR,DOUBLE,0,0.0,term_months,INTEGER,0,Approval/disbursement candidate
+NaicsCode,VARCHAR,BIGINT,2,0.0004,naics_code,VARCHAR,2,Approval/disbursement candidate
+NaicsDescription,VARCHAR,VARCHAR,3,0.0005,,,,Descriptive or unverified timing omitted
+FranchiseCode,VARCHAR,VARCHAR,498201,91.2872,,,,Descriptive or unverified timing omitted
+FranchiseName,VARCHAR,VARCHAR,498307,91.3067,,,,Descriptive or unverified timing omitted
+ProjectCounty,VARCHAR,VARCHAR,0,0.0,,,,Descriptive or unverified timing omitted
+ProjectState,VARCHAR,VARCHAR,0,0.0,project_state,VARCHAR,0,Approval/disbursement candidate
+SBADistrictOffice,VARCHAR,VARCHAR,0,0.0,,,,Descriptive or unverified timing omitted
+CongressionalDistrict,VARCHAR,VARCHAR,29,0.0053,,,,Descriptive or unverified timing omitted
+BusinessType,VARCHAR,VARCHAR,32,0.0059,business_type,VARCHAR,32,Approval/disbursement candidate
+BusinessAge,VARCHAR,VARCHAR,1861,0.341,business_age,VARCHAR,49719,Approval/disbursement candidate
+LoanStatus,VARCHAR,VARCHAR,0,0.0,loan_status,VARCHAR,0,Outcome or servicing only
+PaidInFullDate,VARCHAR,DATE,148030,27.1241,paid_in_full_date,DATE,147187,Outcome or servicing only
+ChargeOffDate,VARCHAR,DATE,511207,93.6704,charge_off_date,DATE,510071,Outcome or servicing only
+GrossChargeOffAmount,VARCHAR,DOUBLE,0,0.0,gross_charge_off_amount,"DECIMAL(18,2)",0,Outcome or servicing only
+RevolverStatus,VARCHAR,VARCHAR,0,0.0,revolving_credit,BOOLEAN,0,Approval/disbursement candidate
+JobsSupported,VARCHAR,DOUBLE,2,0.0004,jobs_supported,INTEGER,2,Descriptive or unverified timing omitted
+CollateralInd,VARCHAR,VARCHAR,0,0.0,collateral_reported,BOOLEAN,0,Approval/disbursement candidate
+SoldSecMrktInd,VARCHAR,VARCHAR,417762,76.5481,,,,Outcome or servicing only

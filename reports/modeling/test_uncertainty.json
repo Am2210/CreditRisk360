@@ -1,0 +1,30 @@
+{
+  "blocks": 24,
+  "replicates": 200,
+  "percentile_intervals": {
+    "champion_roc_auc": [
+      0.7082508712850636,
+      0.7261115832275918
+    ],
+    "champion_pr_auc_average_precision": [
+      0.08975185470030737,
+      0.09965940507102794
+    ],
+    "champion_brier": [
+      0.04030750039964914,
+      0.04303912343457341
+    ],
+    "difference_roc_auc": [
+      0.008282453837208747,
+      0.021168322239936355
+    ],
+    "difference_pr_auc_average_precision": [
+      0.002958517042302065,
+      0.012314754138260648
+    ],
+    "difference_brier": [
+      -0.0004967297672038747,
+      -0.0002827592470042545
+    ]
+  }
+}
