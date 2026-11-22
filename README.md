@@ -4,7 +4,7 @@
 
 > When a lender has thousands of small-business loans but limited capacity to investigate them, which accounts should be prioritized for review—and how reliable are those risk estimates?
 
-CreditRisk 360 investigates that question using historical SBA 7(a) lending data. It shows where recorded charge-offs concentrate, compares models that could help prioritize portfolio monitoring, and tests how hypothetical probability shocks change portfolio risk indicators. The dashboard is a research tool for portfolio analysis.
+CreditRisk 360 uses historical SBA 7(a) lending data to study charge-off concentrations, compare risk rankings and probability estimates, and illustrate portfolio sensitivity to hypothetical shocks.
 
 ### [Launch the live dashboard](https://creditrisk360-eveittxvutuwaig2upqksd.streamlit.app/)
 
