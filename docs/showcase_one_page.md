@@ -1,6 +1,8 @@
 # CreditRisk 360
 
-**Quantitative finance portfolio project · SBA 7(a) loan risk and stress testing**
+**Explainable Credit Risk Modeling & Portfolio Stress Analytics**
+
+[Launch the live dashboard](https://creditrisk360-eveittxvutuwaig2upqksd.streamlit.app/)
 
 ## Why it matters
 
