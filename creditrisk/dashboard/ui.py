@@ -6,7 +6,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from .data import FILTER_FIELDS, Scope, filter_options, sector_label
+from .catalog import FILTER_FIELDS, sector_label
 
 INK = "#182b40"
 BLUE = "#426784"
@@ -127,6 +127,8 @@ def export(frame, filename, label="Download CSV"):
 
 
 def filters(key, model, namespace):
+    from .data import Scope, filter_options
+
     choices = filter_options(key, model)
     with st.form(f"{namespace}_scope"):
         cols = st.columns(3)

@@ -1,11 +1,10 @@
 """Interactive validation of the three frozen probability models."""
 
-import numpy as np
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from .data import MODELS, discrimination, model_diagnostics, model_scores, report
+from .catalog import MODELS
 from .ui import BLUE, GOLD, MODEL_COLORS, SLATE, TEAL, cards, chart, export, panel, pct, title
 
 METRIC_COLUMNS = {
@@ -19,8 +18,10 @@ METRIC_COLUMNS = {
 }
 
 
-def comparison(key, cohort, study="retrospective"):
-    metrics = report(key, "metrics.csv")
+def comparison(key, cohort, study="retrospective", *, metrics=None):
+    if metrics is None:
+        from .data import report
+        metrics = report(key, "metrics.csv")
     chosen = metrics.loc[
         metrics.study.eq(study) & metrics.cohort.eq(cohort) & metrics.variant.isin(["selected", "reference"])
     ].copy()
@@ -28,8 +29,7 @@ def comparison(key, cohort, study="retrospective"):
     return chosen
 
 
-def curves(key, cohort, prevalence):
-    data = discrimination(key, cohort)
+def curves(data, prevalence):
     metrics = {
         "roc": ("Receiver operating characteristic", "False positive rate", "True positive rate"),
         "pr": ("Precision–recall", "Recall", "Precision"),
@@ -54,6 +54,8 @@ def curves(key, cohort, prevalence):
 
 
 def calibration(key, cohort, model):
+    from .data import report
+
     bins = report(key, "reliability.csv")
     bins = bins.loc[
         bins.study.eq("retrospective") & bins.cohort.eq(cohort)
@@ -74,6 +76,9 @@ def calibration(key, cohort, model):
 
 
 def distribution(key, cohort, model, threshold):
+    import numpy as np
+    from .data import model_scores
+
     saved = model_scores(key, cohort)
     edges = np.linspace(0, max(0.05, float(saved[model].max())), 30)
     fig = go.Figure()
@@ -90,6 +95,8 @@ def distribution(key, cohort, model, threshold):
 
 
 def render(key, release):
+    from .data import discrimination, model_diagnostics, report
+
     title("Credit risk model lab", "Compare frozen models, calibration and decision thresholds on saved scores.")
     selectors = st.columns([1, 1, 1.4])
     models = list(MODELS)
@@ -113,7 +120,7 @@ def render(key, release):
         st.subheader("Model comparison")
         st.dataframe(rows[["Model", *METRIC_COLUMNS]], column_config=METRIC_COLUMNS, hide_index=True, width="stretch")
         export(rows, "model_comparison.csv", "Download comparison")
-    curves(key, cohort, float(selected.observed_rate))
+    curves(discrimination(key, cohort), float(selected.observed_rate))
     left, right = st.columns(2)
     with panel("lab_calibration", left):
         st.subheader("Probability calibration")

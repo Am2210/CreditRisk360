@@ -11,6 +11,8 @@
 
 The clean environment used Windows x64 Python 3.12.7. I copied source files and the two original inputs into an ignored project copy. It began without a database, model artifacts, or reports. The following commands omit the absolute workspace prefix for portability. [Saved test results](../reports/validation/test-results.txt)
 
+The original full environment lock used below is now named `requirements-local.txt`. The root `requirements.txt` contains the Cloud runtime dependencies.
+
 ```powershell
 python -m venv artifacts/release-validation/.venv
 $releasePython = (Resolve-Path 'artifacts/release-validation/.venv/Scripts/python.exe').Path

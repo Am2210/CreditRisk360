@@ -3,14 +3,19 @@
 import plotly.graph_objects as go
 import streamlit as st
 
-from .data import Scope, aggregates
 from .ui import AMOUNT_HELP, BLUE, OBSERVED_HELP, TEAL, approval_bars, cards, chart, export, grouped, money, panel, pct, title
 
 
 def render(key, release):
-    title("Executive portfolio overview", "SBA 7(a) · Eligible funded records from FY2010–FY2019 approvals")
+    from .data import Scope, aggregates
+
     totals = aggregates(key, Scope("all"), ("portfolio", "vintage", "industry", "state", "size", "collateral"),
                         release["champion"])
+    render_summary(totals)
+
+
+def render_summary(totals):
+    title("Executive portfolio overview", "SBA 7(a) · Eligible funded records from FY2010–FY2019 approvals")
     stats = grouped(totals, "portfolio").iloc[0]
     cards(
         ("Eligible loan records", f"{stats.records:,.0f}", "Distinct source records meeting the five-year eligibility rule."),
@@ -68,4 +73,5 @@ def render(key, release):
         fig.update_xaxes(type="category", title="First-disbursement fiscal year", showgrid=False)
         fig.update_yaxes(title="Approved principal (USD billions)")
         chart(fig, key="overview_volume", height=240)
-    export(totals.drop(columns=["predicted_rate", "expected_events"]), "portfolio_overview.csv", "Download portfolio aggregates")
+    export(totals.drop(columns=["predicted_rate", "expected_events"], errors="ignore"),
+           "portfolio_overview.csv", "Download portfolio aggregates")

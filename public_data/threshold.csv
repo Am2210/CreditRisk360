@@ -1,0 +1,4 @@
+model,threshold,tn,fp,fn,tp
+logistic,0.05,51323,47182,990,3641
+random_forest,0.05,58076,40429,1225,3406
+xgboost,0.05,55068,43437,1105,3526

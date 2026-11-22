@@ -3,7 +3,7 @@
 import plotly.graph_objects as go
 import streamlit as st
 
-from .data import FILTER_FIELDS, MODELS, aggregates
+from .catalog import FILTER_FIELDS, MODELS
 from .ui import (
     AMOUNT_HELP, BLUE, OBSERVED_HELP, PREDICTED_HELP, TEAL,
     cards, chart, export, filters, grouped, money, panel, pct, title,
@@ -11,6 +11,8 @@ from .ui import (
 
 
 def render(key, release):
+    from .data import aggregates
+
     model = release["champion"]
     title("Portfolio risk explorer", f"Filter the portfolio and compare observed charge-offs with frozen {MODELS[model]} scores.")
     scope = filters(key, model, "explorer")

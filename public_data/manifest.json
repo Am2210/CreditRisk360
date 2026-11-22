@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "snapshot": "2026-09-30",
+  "champion": "xgboost",
+  "fit": {
+    "features": [
+      "gross_approval",
+      "sba_guaranteed_approval",
+      "initial_interest_rate_pct",
+      "rate_type",
+      "project_state",
+      "naics_code",
+      "processing_method",
+      "business_type",
+      "business_age",
+      "collateral_reported",
+      "revolving_credit"
+    ]
+  },
+  "shap_sample_records": 2500,
+  "checksums": {
+    "overview.csv": "5a7ccdfee137848859734fbaa773735e199bfecd49dcb9439d1b9d0861a5db5f",
+    "explorer.csv": "5b2438959bd6dc00f3d3775b886f48330160945669a7d83307701284f317d3bd",
+    "curves.csv": "149e870e432695c164b3a584c6c48f752c69702f5194db942192283083739a55",
+    "calibration.csv": "d18b2ddff4e4ab18157b0dee26722a404b64c6422c4125644e3b71e6d3864ce7",
+    "threshold.csv": "ffc95eaed729915746fc720cae89cbde83b3532e66e26cc31e5718bed13a4aa7",
+    "stress.csv": "78058aab3ce3e3996a93e3bdb848105fd62f10a289196b00d6e740fd81c09dd5",
+    "metrics.csv": "2fa62a6e9dc9dcb2d6987286fddc9d92a90d6cf8a023c194efee4c32ed3373da",
+    "cohort_audit.csv": "a2636ff430ecb3f8fc7720004b612e6c6be050349890fda0c6489fe534c90616",
+    "tree_shap_importance.csv": "68d3fd35abeb1e8afdb9eca625b9546b670a58c7e4a53985594d81bda6b79e2d"
+  }
+}

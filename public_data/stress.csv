@@ -1,0 +1,4 @@
+scenario,multiplier,weighted_event_indicator,record_count,proxy_basis_usd
+Baseline,1,0.0232029865199,103136,10000000
+Moderate stress,1.25,0.0290037331498,103136,10000000
+Severe stress,1.75,0.0406052264097,103136,10000000

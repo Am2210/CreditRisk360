@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-from .data import FILTER_FIELDS, MODELS, aggregates
+from .catalog import FILTER_FIELDS, MODELS
 from .ui import BLUE, GOLD, TEAL, cards, chart, export, filters, grouped, money, panel, pct, title
 
 SCENARIOS = {"baseline": ("Baseline", BLUE), "moderate": ("Moderate stress", TEAL), "severe": ("Severe stress", GOLD)}
@@ -13,6 +13,8 @@ WEIGHT_HELP = "Sum of approved principal × stressed probability divided by tota
 
 
 def render(key, release):
+    from .data import aggregates
+
     model = release["champion"]
     title("Credit stress testing", f"Apply hypothetical probability shocks to the frozen {MODELS[model]} scores.")
     controls = st.columns([1.65, 1, 1, 1.3])

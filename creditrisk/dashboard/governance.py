@@ -4,7 +4,7 @@ import streamlit as st
 
 from creditrisk.paths import ROOT
 
-from .data import MODELS, report
+from .catalog import MODELS
 from .lab import METRIC_COLUMNS, comparison
 from .ui import cards, export, panel, title
 
@@ -18,9 +18,15 @@ FEATURE_NAMES = {
 
 
 def render(key, release):
+    from .data import report
+
+    render_evidence(release, report(key, "metrics.csv"), report(key, "cohort_audit.csv"))
+
+
+def render_evidence(release, metrics, cohort_audit, *, public=False):
     title("Model governance & documentation", "Data provenance, validation evidence and appropriate model use.")
     fit = release["fit"]
-    test = comparison(key, "test")
+    test = comparison(None, "test", metrics=metrics)
     count = int(test.iloc[0].records)
     cards(
         ("Data snapshot", release["snapshot"], "AsOfDate on the source SBA extract."),
@@ -65,14 +71,13 @@ def render(key, release):
         else:
             st.caption("The sensitivity fit on FY2010, tuned on FY2011, and calibrated and selected on FY2012. "
                        "All development horizons closed before FY2018. Historical extract revisions remain unknown.")
-        metrics = comparison(key, "test", study)
-        st.dataframe(metrics[["Model", *METRIC_COLUMNS]], column_config=METRIC_COLUMNS,
+        study_metrics = comparison(None, "test", study, metrics=metrics)
+        st.dataframe(study_metrics[["Model", *METRIC_COLUMNS]], column_config=METRIC_COLUMNS,
                      hide_index=True, width="stretch")
         with st.expander("Cohort coverage and label maturity"):
-            audit = report(key, "cohort_audit.csv")
-            audit = audit.loc[audit.study.eq(study)].drop(columns="study")
+            audit = cohort_audit.loc[cohort_audit.study.eq(study)].drop(columns="study")
             st.dataframe(audit, hide_index=True, width="stretch")
-        export(metrics, f"governance_{study}_metrics.csv", "Download validation metrics")
+        export(study_metrics, f"governance_{study}_metrics.csv", "Download validation metrics")
 
     left, right = st.columns(2)
     with panel("governance_use", left):
@@ -95,8 +100,11 @@ def render(key, release):
             "and fair-lending review."
         )
     with st.expander("Model artifacts and audit documentation"):
-        st.code(f"Database SHA-256  {fit['database']['sha256']}\n"
-                f"scikit-learn      {fit['sklearn']}\nXGBoost           {fit['xgboost']}")
+        if public:
+            st.caption("This mode uses a fixed aggregate release. No borrower records or fitted models are served.")
+        else:
+            st.code(f"Database SHA-256  {fit['database']['sha256']}\n"
+                    f"scikit-learn      {fit['sklearn']}\nXGBoost           {fit['xgboost']}")
         for filename, label in (("modeling_report.md", "Download technical modeling report"),
                                 ("target_and_leakage.md", "Download target and leakage assessment")):
             st.download_button(label, (ROOT / "docs" / filename).read_bytes(), file_name=filename,

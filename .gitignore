@@ -14,6 +14,7 @@ __pycache__/
 *.p12
 *.joblib
 *.ubj
+*.pkl
 *.duckdb
 *.duckdb.*
 *.parquet
@@ -22,6 +23,7 @@ __pycache__/
 *.log
 /data/
 FOIA_*.csv
+FOIA_*.zip
 7a_504_foia_data_dictionary*.xlsx
 /.matplotlib/
 /artifacts/

@@ -47,7 +47,9 @@ The dashboard scales the holdout mix to an illustrative **$10 million** approved
 
 ## Dashboard
 
-The five pages cover portfolio overview, model validation, segment investigation, stress testing, and model governance. The app uses cached read-only DuckDB queries and frozen Parquet scores.
+The five pages cover portfolio overview, model validation, segment investigation, stress testing, and model governance. The full local app uses cached read-only DuckDB queries and frozen Parquet scores.
+
+The repository also includes an aggregate-only public demo for Streamlit Community Cloud. It starts automatically when local artifacts are absent. It uses fixed cohort summaries, pooled segments, and preset stress scenarios. [Deployment and disclosure controls](docs/cloud_deployment.md)
 
 [Stress testing dashboard](docs/screenshots/stress-testing.jpg) · [Holdout discrimination plots](reports/modeling/discrimination.png) · [Calibration and decile analysis](reports/modeling/calibration_and_deciles.png)
 
@@ -57,14 +59,14 @@ Use **64-bit Python 3.12** on Windows and PowerShell. Download the two SBA files
 
 ```powershell
 python -m venv .venv
-& .\.venv\Scripts\python.exe -m pip install --only-binary=:all: -r requirements.txt
+& .\.venv\Scripts\python.exe -m pip install --only-binary=:all: -r requirements-local.txt
 & .\.venv\Scripts\python.exe -m pip check
 $env:MPLCONFIGDIR = Join-Path (Get-Location) '.matplotlib'
 & .\.venv\Scripts\python.exe -m creditrisk.pipeline
 & .\.venv\Scripts\python.exe -m creditrisk.modeling.train
 & .\.venv\Scripts\python.exe -m creditrisk.modeling.evaluate
 & .\.venv\Scripts\python.exe -m unittest discover -s tests -v
-& .\.venv\Scripts\python.exe -m streamlit run app.py --server.headless true --server.port 8502
+& .\.venv\Scripts\python.exe -m streamlit run app.py --server.headless true --server.address 127.0.0.1 --server.port 8502
 ```
 
 Open [localhost:8502](http://127.0.0.1:8502). Training freezes the selected models and validation decisions before the separate evaluation command. Rebuild the score artifacts whenever the database or model release changes. The app verifies the saved release checksums before it queries the data.
